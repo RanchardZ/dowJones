@@ -36,6 +36,7 @@ todo:
 * checkout the new syntax features of ES6
 * checkout how to do styling in React
 * continue on the tutorials of React, Redux and Webpack, and go over the example in the official site.
+* checkout [TodoMVC](http://todomvc.com/examples/react)
 * make plan for next weekdays.
 
 
