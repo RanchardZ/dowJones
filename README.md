@@ -24,19 +24,20 @@ A pet project on displaying stocks.
 
 ####Got:
 
-1. get a flavour of why react is organized that way, instead of a MV* framework
-2. get a flavour of how React, Redux and Webpack work together.
+1. why react is organized that way, instead of a MV* framework
+2. how React, Redux and Webpack work together.
 
 
 ###6th March:
 
 todo:
 
-* checkout the project test requirements on evernote
-* checkout the new syntax features of ES6
+* checkout the project test requirements on evernote (checked)
+* checkout the new syntax features of ES6 [Javascript ES6 Cheatsheet - the best of JS ES6](https://www.youtube.com/watch?v=LmL0Gh193M0) (checked)
 * checkout how to do styling in React
-* continue on the tutorials of React, Redux and Webpack, and go over the example in the official site.
+* continue on the tutorials of React, Redux and Webpack, and go over the example in the official site. (checked)
 * checkout [TodoMVC](http://todomvc.com/examples/react)
+* checkout [jQuery](https://www.youtube.com/watch?v=YzR-Iv2l8sE&list=PLAwxTw4SYaPkk4k42lGH3l-MlojoNFBFI) and [ajax](https://www.youtube.com/watch?v=P5JlebbqzTQ&list=PLAwxTw4SYaPkZTDQ0vR9BwkHnku9QRwqh) tutorial at Udacity (checked)
 * make plan for next weekdays.
 
 
