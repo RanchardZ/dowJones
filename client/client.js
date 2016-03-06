@@ -3,9 +3,26 @@ import { render } from 'react-dom'
 
 // modules written 
 import App from '../components/App'
+import configureStore from '../redux/store'
+import { Provider } from 'react-redux'
+
+
+let initialState = {
+	stocks: [
+		{
+			abbr: 'test_stock',
+			daily: []
+		}
+	]
+}
+
+let store = configureStore(initialState)
+
 
 render(
-	<App/>,
+	<Provider store={store}>
+		<App/>
+	</Provider>,
 	document.getElementById('app')
 )
 

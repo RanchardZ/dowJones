@@ -24,6 +24,10 @@ class SearchBar extends Component {
 		});
 	}
 
+	testProps() {
+		console.log(this.props.stocks);
+	}
+
 	handleChange(evt) {
 		this.setState({
 			inputStock: evt.target.value

@@ -5,7 +5,7 @@ class StockBlock extends Component {
 	render() {
 		return (
 			<div>
-				This is a stock block used to place stock infomation
+				This is the StockBlock
 			</div>
 		)
 	}
