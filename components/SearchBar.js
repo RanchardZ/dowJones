@@ -40,6 +40,11 @@ class SearchBar extends Component {
 		});
 	}
 
+	handleSubmit(evt) {
+		evt.preventDefault();
+		this.getStockInfo();
+	}
+
 	handleChange(evt) {
 		this.setState({
 			inputStock: evt.target.value
@@ -48,13 +53,12 @@ class SearchBar extends Component {
 
 	render() {
 		return (
-			<div>
-				<input type="text" 
-					   value={this.state.inputStock} 
-					   placeholder="abbr of stock"
-					   onChange={this.handleChange.bind(this)} />
-				<button onClick={this.getStockInfo.bind(this)}> Search </button>
-			</div>
+			<form onSubmit={this.handleSubmit.bind(this)}>
+				<div className="input-field align-left">
+					<input id="search" type="search" value={this.state.inputStock} placeholder="abbr of stock" onChange={this.handleChange.bind(this)} required />
+					<i className="material-icons" onClick={this.getStockInfo.bind(this)}>search</i>
+				</div>
+			</form>
 		)
 	}
 }

@@ -6,8 +6,10 @@ class NavBar extends Component {
 	render() {
 		return (
 			<div>
-				<div>This is a navbar</div>
-				<SearchBar actions={this.props.actions} stocks={this.props.stocks}/>
+				<nav roll="navigation" className="teal">
+					<span className="brand-logo center"> Dow Jones in one click </span>
+					<SearchBar actions={this.props.actions} stocks={this.props.stocks}/>
+				</nav>
 			</div>
 		)
 	}

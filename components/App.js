@@ -13,7 +13,7 @@ class App extends Component {
 		return (
 			<div>
 				<NavBar actions={this.props.actions} stocks={this.props.stocks}/>
-				<StockBlock stocks={this.props.stocks} />
+				<StockBlock className="container" stocks={this.props.stocks} />
 			</div>
 		)
 	}
