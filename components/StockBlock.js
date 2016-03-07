@@ -5,13 +5,15 @@ class StockBlock extends Component {
 
 	render() {
 		return (
-			<ul>
-				{
-					this.props.stocks.map((stock) => {
-						return <StockItem stock={stock} />
-					})
-				}
-			</ul>
+			<div>
+				<ul>
+					{
+						this.props.stocks.map((stock) => {
+							return <li><StockItem stock={stock} /></li>
+						})
+					}
+				</ul>
+			</div>
 		)
 	}
 }
