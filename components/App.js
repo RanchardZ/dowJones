@@ -12,8 +12,8 @@ class App extends Component {
 	render() {
 		return (
 			<div>
-				<NavBar/>
-				<StockBlock actions={this.props.actions} stocks={this.props.stocks} />
+				<NavBar actions={this.props.actions} stocks={this.props.stocks}/>
+				<StockBlock stocks={this.props.stocks} />
 			</div>
 		)
 	}

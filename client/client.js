@@ -8,12 +8,7 @@ import { Provider } from 'react-redux'
 
 
 let initialState = {
-	stocks: [
-		{
-			abbr: 'test_stock',
-			daily: []
-		}
-	]
+	stocks: []
 }
 
 let store = configureStore(initialState)

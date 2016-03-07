@@ -7,7 +7,7 @@ class NavBar extends Component {
 		return (
 			<div>
 				<div>This is a navbar</div>
-				<SearchBar/>
+				<SearchBar actions={this.props.actions} stocks={this.props.stocks}/>
 			</div>
 		)
 	}

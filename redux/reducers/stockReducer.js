@@ -3,9 +3,10 @@
 let stockReducer = function(stocks = [], action) {
 	switch (action.type) {
 		case 'ADD_TO_STOCK':
+			// console.log('in addToStock');
 			return [{
-						abbr: action.stock_data.meta.ticker,
-						stock_data: action.stock_data.series
+						abbr: action.abbr,
+						daily: action.daily
 					}, ...stocks]
 		default:
 			return  stocks;
