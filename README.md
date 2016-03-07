@@ -42,9 +42,14 @@ todo:
 
 问题描述：
 git clone以后
+
 npm install 
+
 npm runserver
+
 然后打开localhost:5010/
+
 输入股票的缩写， 如BABA，然后点击Search，就会在底下列出该股票名称，
 再输入一只股票，如MSFT,然后点击Search，就会形成列表
+
 但是，这时候点击Show CandleStick，列表就会被覆盖了。我不理解，我在React中给每支股票设置一个block，直观上理解的话，当显示了上面一只股票的CandleStick的时候，底下一只股票应当排列在它底下，但为什么是覆盖了呢？
