@@ -51,6 +51,13 @@ A pet project on displaying stocks.
 
 ###7th March:
 
-* Control the data flow, and code some basic functions mentioned in the plan.
+* Control the data flow, and code some basic functions mentioned in the plan.(checked)
+* A list view of stocks.(checked)
+
+###8th March:
+
+* Delete stock from current panel.
+* tooptips of combined graph.
+* Backend. connect to sqlite.
 
 
