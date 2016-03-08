@@ -55,8 +55,7 @@ class StockItem extends Component {
 				valueFormatString: "MMM-DD",
 			},
 			toolTip: {
-				content: "Date:{x}</br><strong>Prices:</strong></br>Open:{y[0]}, Close:{y[3]}</br>High:{y[1]},Low:{y[2]}",
-				content: "Date:{x}</br><strong>Volume:</strong>{z}"
+				content: "Date:{x}</br><strong>Prices:</strong></br>Open:{y[0]}, Close:{y[3]}</br>High:{y[1]},Low:{y[2]}</br>Volume:{z}",
 			},
 			data: [
 			{
@@ -72,6 +71,17 @@ class StockItem extends Component {
 		chart.render();
 	}
 
+	removeStock() {
+		this.props.removeFromStock(this.props.stock.abbr);
+	}
+
+	testScript() {
+		console.log('hello');
+		selector = '#' + this.props.stock.abbr;
+		console.log(selector);
+		return "Hello"
+	}
+
 	render() {
 		let rect = {height: '300px', width: '1000px'};
 		let bt = {width: '200px'}
@@ -84,7 +94,8 @@ class StockItem extends Component {
 					<li><div className="chip">{this.props.stock.abbr.toUpperCase()}</div></li><br/>
 					<li><div className="btn" onClick={this.showCandleStick.bind(this, 1)} style={bt}>One Day</div></li><br/>
 					<li><div className="btn" onClick={this.showCandleStick.bind(this, 5)} style={bt}>Five Day</div></li><br/>
-					<li><div className="btn" onClick={this.showCandleStick.bind(this, 30)} style={bt}>one Month</div></li>
+					<li><div className="btn" onClick={this.showCandleStick.bind(this, 30)} style={bt}>one Month</div></li><br/>
+					<li><div className="btn teal darken-2" onClick={this.removeStock.bind(this)} style={bt}>Remove</div></li>
 					<br/>
 					</ul>
 					</div>

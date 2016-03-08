@@ -22,7 +22,7 @@ class SearchBar extends Component {
 			}
 		}
 
-
+		// get stock data from yahoo finance api
 		let stockUrl = `http://chartapi.finance.yahoo.com/instrument/1.0/${inputStock}/chartdata;type=quote;range=1y/json`
 		
 		let abbr, daily;
@@ -38,6 +38,19 @@ class SearchBar extends Component {
 				act(data.meta.ticker, data.series);
 			}
 		});
+
+		// get news data from nytimes api
+		let nytimesUrl = `http://api.nytimes.com/svc/search/v2/articlesearch.json?q=${inputStock}&sort=newest&api-key=89abc25b3738f03f8f4d0db2573f5479:3:74645363`
+		let selector = '#' + inputStock.toLowerCase();
+		console.log(selector);
+		$.getJSON(nytimesUrl, function(data){
+			$(selector).text(`New York Times Articles About ${inputStock}`);
+			let articles = data.response.docs;
+			for (let i=0; i<3; i++) {
+				let article = articles[i];
+				$(selector).append(`<li class="left-align"><a href="${article.web_url}">${article.headline.main}</a> + <p>${article.snippet}</p></li>`);
+			};
+		})
 	}
 
 	handleSubmit(evt) {

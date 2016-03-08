@@ -5,6 +5,12 @@ let actions = {
 			abbr: abbr,
 			daily: daily
 		}
+	},
+	removeFromStock: function(abbr) {
+		return {
+			type: 'REMOVE_FROM_STOCK',
+			abbr: abbr
+		}
 	}
 }
 
