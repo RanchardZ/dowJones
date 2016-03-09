@@ -9,13 +9,17 @@ var webpackHotMiddleware = require('webpack-hot-middleware');
 
 var app = express();
 
+// sqlite
+// var sqlite3 = require('sqlite3').verbose();
+// var db 		= new sqlite3.Database('dowjones');
+
+// db.serialize(function()) {}
+
+// app.uses are middle wares.
 // app.use(webpack in dev mode)
 var compiler = webpack(config);
 app.use(webpackDevMiddleware(compiler, {noInfo: true, publicPath: config.output.publicPath}));
 app.use(webpackHotMiddleware(compiler));
-
-
-
 
 app.use(express.static('./dist'));
 

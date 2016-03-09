@@ -11,7 +11,7 @@ class SearchBar extends Component {
 
 	getStockInfo() {
 		// get stock info with Yahoo api
-		let inputStock = this.state.inputStock;
+		const inputStock = this.state.inputStock;
 
 		// check if current stock is in state
 
@@ -23,9 +23,8 @@ class SearchBar extends Component {
 		}
 
 		// get stock data from yahoo finance api
-		let stockUrl = `http://chartapi.finance.yahoo.com/instrument/1.0/${inputStock}/chartdata;type=quote;range=1y/json`
+		const stockUrl = `http://chartapi.finance.yahoo.com/instrument/1.0/${inputStock}/chartdata;type=quote;range=1y/json`
 		
-		let abbr, daily;
 		let act = this.props.actions.addToStock;
 		
 		$.ajax({
@@ -40,14 +39,14 @@ class SearchBar extends Component {
 		});
 
 		// get news data from nytimes api
-		let nytimesUrl = `http://api.nytimes.com/svc/search/v2/articlesearch.json?q=${inputStock}&sort=newest&api-key=89abc25b3738f03f8f4d0db2573f5479:3:74645363`
-		let selector = '#' + inputStock.toLowerCase();
+		const nytimesUrl = `http://api.nytimes.com/svc/search/v2/articlesearch.json?q=${inputStock}&sort=newest&api-key=89abc25b3738f03f8f4d0db2573f5479:3:74645363`
+		const selector = '#' + inputStock.toLowerCase();
 		console.log(selector);
 		$.getJSON(nytimesUrl, function(data){
 			$(selector).text(`New York Times Articles About ${inputStock}`);
-			let articles = data.response.docs;
+			const articles = data.response.docs;
 			for (let i=0; i<3; i++) {
-				let article = articles[i];
+				const article = articles[i];
 				$(selector).append(`<li class="left-align"><a href="${article.web_url}">${article.headline.main}</a> + <p>${article.snippet}</p></li>`);
 			};
 		})
