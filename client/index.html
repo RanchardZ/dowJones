@@ -14,5 +14,13 @@
 	<script src="bundle.js" ></script>
 	<script src='//code.jquery.com/jquery-1.11.1.min.js'></script>
 	<script src="js/canvasjs.min.js" ></script>
+	<script>
+		var stockForm = $('#stockForm');
+		var searchIcon = $('#searchIcon');
+		searchIcon.onclick = function() {
+			console.log('submit stockForm');
+			stockForm.submit();
+		};
+	</script>
 </body>
 </html>

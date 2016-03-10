@@ -3,7 +3,7 @@ const APPL = {abbr: 'appl',
 			  daily: [
 			  	{Date: '20140101', volume: 1283712, open: 13.3, high: 15.5, low: 10.0, close: 13.3},
 			  	{Date: '20140102', volume: 1231212, open: 13.5, high: 15.9, low: 10.5, close: 13.4}
-			  ]}
+			  ]};
 
 
 var openDB = function() {
@@ -37,7 +37,6 @@ var insertTable = function(db, stock) {
 			volume = daily[i].volume;
 
 			stmt.run(cur_id+i, abbr, date, volume, open, high, low, close);
-			console.log(cur_id+i, abbr, date, volume, open, high, low, close);
 		}
 		stmt.finalize();
 	});
@@ -62,22 +61,50 @@ var clearTable = function(db) {
 
 
 var stockQuery = function(db, abbr) {
-	var daily = [];
-	const sql = `SELECT * FROM stockInfo WHERE abbr = ${abbr}`;
-	db.each(sql, function(err, row) {
-		daily.push({
-			date: new Date(row.date),
-			abbr: row.abbr,
-			volume: row.volume,
-			open: row.open,
-			high: row.high,
-			low: row.low,
-			close: row.close
-					});
+	
+	db.serialize(function() {	
+		var daily = dail;	
+		// const sql = `SELECT * FROM stockInfo WHERE abbr = '${abbr}'`;
+		const sql = `SELECT * FROM stockInfo WHERE abbr = '${abbr}'`;
+		console.log(sql);
+		db.each(sql, function(err, row) {
+			console.log(row);
+			if (row) {
+				console.log("yes");
+				daily.push({
+					date: row.date,
+					abbr: row.abbr,
+					volume: row.volume,
+					open: row.open,
+					high: row.high,
+					low: row.low,
+					close: row.close
+							});
+			}
+			console.log(daily);
+		});
+		// console.log(daily);
 	});
-	const stock = {abbr: abbr, daily: daily};
-	console.log(stock);
-	return stock;
+
+	
+
+	// var daily = [];
+	// db.all("SELECT * FROM stockInfo WHERE abbr = ?", [abbr], function(err, rows) {
+	// 	// console.log(rows);
+	// 	return rows;
+	// });
+	// console.log(daily);
+
+
+	
+	// console.log(daily);
+	// if (daily.length == 0) {
+	// 	return null
+	// } else {
+	// 	const stock = {abbr: abbr, daily: daily};
+	// 	console.log(stock);
+	// 	return stock;
+	// }
 };
 
 

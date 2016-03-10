@@ -32,27 +32,35 @@ class SearchBar extends Component {
 			type: 'GET',
 			dataType: 'JSONP',
 			success: function(data) {
-				console.log(data.meta.ticker);
-				console.log(data.series);
-				act(data.meta.ticker, data.series);
-				// const db = openDB();
-				// const stock = {abbr: data.meta.ticker, daily: data.series};
-				// insertTable(db, stock);
+
+				const abbr = data.meta.ticker;
+				const daily = data.series;
+				const stock = JSON.stringify({abbr: abbr, daily: daily});
+				$.ajax({
+					type: "POST",
+					url: "/",
+					data: stock,
+					contentType: "application/json; charset=utf-8",
+					success: function(result) {
+						console.log('successful');
+					}
+				})
+
 			}
 		});
 
 		// get news data from nytimes api
-		const nytimesUrl = `http://api.nytimes.com/svc/search/v2/articlesearch.json?q=${inputStock}&sort=newest&api-key=89abc25b3738f03f8f4d0db2573f5479:3:74645363`
-		const selector = '#' + inputStock.toLowerCase();
-		console.log(selector);
-		$.getJSON(nytimesUrl, function(data){
-			$(selector).text(`New York Times Articles About ${inputStock}`);
-			const articles = data.response.docs;
-			for (let i=0; i<3; i++) {
-				const article = articles[i];
-				$(selector).append(`<li class="left-align"><a href="${article.web_url}">${article.headline.main}</a> + <p>${article.snippet}</p></li>`);
-			};
-		})
+		// const nytimesUrl = `http://api.nytimes.com/svc/search/v2/articlesearch.json?q=${inputStock}&sort=newest&api-key=89abc25b3738f03f8f4d0db2573f5479:3:74645363`
+		// const selector = '#' + inputStock.toLowerCase();
+		// console.log(selector);
+		// $.getJSON(nytimesUrl, function(data){
+		// 	$(selector).text(`New York Times Articles About ${inputStock}`);
+		// 	const articles = data.response.docs;
+		// 	for (let i=0; i<3; i++) {
+		// 		const article = articles[i];
+		// 		$(selector).append(`<li class="left-align"><a href="${article.web_url}">${article.headline.main}</a> + <p>${article.snippet}</p></li>`);
+		// 	};
+		// })
 	}
 
 	handleSubmit(evt) {
@@ -66,6 +74,16 @@ class SearchBar extends Component {
 		})
 	}
 
+	// render() {
+	// 	return (
+	// 		<form action="/" method="post" id="stockForm">
+	// 			<div className="input-field align-left">
+	// 				<input id="search" type="search" name="stockQuery" value={this.state.inputStock} placeholder="abbr of stock" onChange={this.handleChange.bind(this)} required />
+	// 				<i className="material-icons" id="searchIcon">search</i>
+	// 			</div>
+	// 		</form>
+	// 	)
+	// }
 	render() {
 		return (
 			<form onSubmit={this.handleSubmit.bind(this)}>

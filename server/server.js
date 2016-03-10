@@ -5,20 +5,17 @@ var routes = require('../routes/index');
 var webpack = require('webpack');
 var webpackDevMiddleware = require('webpack-dev-middleware');
 var webpackHotMiddleware = require('webpack-hot-middleware');
-
+var bodyParser = require('body-parser');
 
 var app = express();
 
 // sqlite
 var dbutil = require('../backend/dbUtil');
 var db = dbutil.openDB();
-console.log(db);
+console.log("database is opened");
+
 // dbutil.createTable(db);
-// dbutil.insertTable(db, dbutil.appl);
-// dbutil.clearTable(db);
-// dbutil.readTable(db);
-
-
+dbutil.readTable(db);
 dbutil.closeDB(db);
 
 // app.uses are middle wares.
@@ -26,6 +23,9 @@ dbutil.closeDB(db);
 var compiler = webpack(config);
 app.use(webpackDevMiddleware(compiler, {noInfo: true, publicPath: config.output.publicPath}));
 app.use(webpackHotMiddleware(compiler));
+app.use(bodyParser.urlencoded({ extended: false}));
+app.use(bodyParser.json());
+
 
 app.use(express.static('./dist'));
 
