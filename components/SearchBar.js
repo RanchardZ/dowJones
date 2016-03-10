@@ -35,6 +35,9 @@ class SearchBar extends Component {
 				console.log(data.meta.ticker);
 				console.log(data.series);
 				act(data.meta.ticker, data.series);
+				// const db = openDB();
+				// const stock = {abbr: data.meta.ticker, daily: data.series};
+				// insertTable(db, stock);
 			}
 		});
 

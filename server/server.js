@@ -10,10 +10,16 @@ var webpackHotMiddleware = require('webpack-hot-middleware');
 var app = express();
 
 // sqlite
-// var sqlite3 = require('sqlite3').verbose();
-// var db 		= new sqlite3.Database('dowjones');
+var dbutil = require('../backend/dbUtil');
+var db = dbutil.openDB();
+console.log(db);
+// dbutil.createTable(db);
+// dbutil.insertTable(db, dbutil.appl);
+// dbutil.clearTable(db);
+// dbutil.readTable(db);
 
-// db.serialize(function()) {}
+
+dbutil.closeDB(db);
 
 // app.uses are middle wares.
 // app.use(webpack in dev mode)
