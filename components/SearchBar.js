@@ -24,7 +24,7 @@ class SearchBar extends Component {
 		let addToStock = this.props.actions.addToStock;
 		$.ajax({
 			type: "GET",
-			url: `http://localhost:5010/api/stocks/${inputStock.toLowerCase()}`,
+			url: `http://222.29.193.165:5010/api/stocks/${inputStock.toLowerCase()}`,
 			dataType: 'JSON',
 			success: function(data) {
 				if (data.length === 0) {
