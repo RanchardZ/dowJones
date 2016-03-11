@@ -1,22 +1,17 @@
 var express = require('express');
 var path 	= require('path');
 var config 	= require('../webpack.config.js')
-var routes = require('../routes/index');
+// routes
+var routesIndex = require('../routes/index');
+var routesAPI = require('../routes/api');
+// webpack and auto rebuild
 var webpack = require('webpack');
 var webpackDevMiddleware = require('webpack-dev-middleware');
 var webpackHotMiddleware = require('webpack-hot-middleware');
+// let us get the data from a post
 var bodyParser = require('body-parser');
 
 var app = express();
-
-// sqlite
-var dbutil = require('../backend/dbUtil');
-var db = dbutil.openDB();
-console.log("database is opened");
-
-// dbutil.createTable(db);
-dbutil.readTable(db);
-dbutil.closeDB(db);
 
 // app.uses are middle wares.
 // app.use(webpack in dev mode)
@@ -29,7 +24,9 @@ app.use(bodyParser.json());
 
 app.use(express.static('./dist'));
 
-app.use('/', routes);
+app.use('/', routesIndex);
+app.use('/api', routesAPI);
+
 
 
 var port = 5010;
